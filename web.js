@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 
 app.use(function(req, res, next) {
-    var a = 'http://diary.bestape.com' + req.url;
+    var a = 'http://diary.bestape.net' + req.url;
     res.redirect(a);
 });
 
