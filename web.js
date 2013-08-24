@@ -1,9 +1,9 @@
 var express = require('express');
 var app = express();
 
-app.get('/', function(req, res) {
-    var a = req.route.path;
-    res.redirect('http://diary.bestape.net' + a)
+app.use(function(req, res, next) {
+    var a = 'http://diary.bestape.com' + req.url;
+    res.redirect(a);
 });
 
 var port = process.env.PORT || 8080;
