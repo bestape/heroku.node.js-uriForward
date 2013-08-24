@@ -1,10 +1,9 @@
 var express = require('express');
-var fs = require('fs');
 var app = express();
 
 app.get('/', function(req, res) {
-    var buffer = new Buffer(fs.readFileSync('index.html', 'utf-8'));
-    res.send(buffer.toString());
+    var a = req.route.path;
+    res.redirect('http://diary.bestape.net' + a)
 });
 
 var port = process.env.PORT || 8080;
