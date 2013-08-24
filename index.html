@@ -3,9 +3,9 @@
     <script type="text/javascript">
       var a = window.location;
 console.log(a);
-      var b = a.replace('blog.bestape.net/', 'diary.bestape.net');
-
+      var b = a.replace(/blog.bestape.net/g, 'diary.bestape.net');
 console.log(b);
+      window.location = b;
     </script>
   </head>
 </html>
