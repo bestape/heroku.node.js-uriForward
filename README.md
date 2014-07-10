@@ -2,7 +2,7 @@
 ## license
 heroku.node.js-uriForward is released under the [ISC](http://www.isc.org/downloads/software-support-policy/isc-license) license.
 
-Copyright &copy 2013-2014 by [bestape](mailto:heroku.node.js-uriForward@bestape.net) 
+Copyright &copy; 2013-2014 by [bestape](mailto:heroku.node.js-uriForward@bestape.net) 
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
 
