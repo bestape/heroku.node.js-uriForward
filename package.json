@@ -14,5 +14,13 @@
     "npm": "1.1.x"
   },
   "author": "Kyle MacLean Smith",
-  "license": "BSD"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bestape/heroku.node.js-uriForward"
+  },
+  "bugs": {
+    "url": "https://github.com/bestape/heroku.node.js-uriForward/issues"
+  },
+  "homepage": "https://github.com/bestape/heroku.node.js-uriForward"
 }
