@@ -1,15 +1,14 @@
 # smart url forward for heroku
 ## why
-To forward from one domain to the next. 
-
-For instance, forward `<APP_NAME>.herokuapp.com/<DYNDATA_DESTINATION_URL>` to `<DESTINATION_URL>`.
+To forward from one domain to the next: 
+* `<APP_NAME>.herokuapp.com/<URL_PATH_AFTER_FIRST_/>` to `<DESTINATION_URL>`.
 
 ## about
-This webapp is designed to use the benifits of: (1) a heroku server; and (2) a personally controlled server configured with [.0.sh](http://0.sh.bestape.net). It follows Unix philosophy's [Rule of Separation](https://en.wikipedia.org/wiki/Unix_philosophy#Eric_Raymond.E2.80.99s_17_Unix_Rules). 
+This webapp is designed to use the benifits of: (q) a personally controlled server configured with [.0.sh](http://0.sh.bestape.net); and (2) a heroku server. It follows Unix philosophy's [Rule of Separation](https://en.wikipedia.org/wiki/Unix_philosophy#Eric_Raymond.E2.80.99s_17_Unix_Rules). 
 
-The personally controlled server's primary job is to host a small JSON file on the web. The JSON file is what the user manually edits on a going forward basis to modify the app's setting. This system is the front-end interface.  
+The personally controlled server's primary job is to host the `dynDns/data.json` file on the Web. `dynDns/data.json` is what the user manually edits on a going forward basis to modify the webapp's setting. This system is the front-end interface.  
 
-The heroku server's primary job is to host the back-end engine. 
+The heroku server's primary job is to be the system that hosts the back-end engine. 
 
 ##setup
 On a personally controlled server (e.g. an [EC2](https://aws.amazon.com/ec2) instance):
@@ -28,7 +27,7 @@ On a personally controlled server (e.g. an [EC2](https://aws.amazon.com/ec2) ins
 * `./dynData/posit.js`.
 
 ## license
-[heroku.node.js-urlForward](heroku.node.js-urlForward.bestape.net) is released under the [ISC](http://www.isc.org/downloads/software-support-policy/isc-license) license.
+[heroku.node.js-urlForward](http://heroku.node.js-urlForward.bestape.net) is released under the [ISC](http://www.isc.org/downloads/software-support-policy/isc-license) license.
 
 Copyright &copy; 2013-2014 by [bestape](mailto:heroku.node.js-urlForward@bestape.net) 
 
