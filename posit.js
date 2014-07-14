@@ -3,46 +3,45 @@
 var xE = require('express')()
 , yE = require('http')
 , xO = require('./posit.json')
-, xS = xO.dynDataLoc
 // events == operative element, data, body, x
 function redirect(xS, xO, xE) {
 	var xI
 	, xA = xO.paths
-	for (xI = 0; xI < xA.length; xI++) {
-		if (xS === xA[xI][0]) {
-			xE.redirect(xA[xI][1])
-			return
-		}
+	function compareReqWAvailablePaths() {
+		if (xS === xA[xI][0]) xE.redirect(xA[xI][1])
+		else if (xA.length - 1 === xI) xE.send(xO)
+		return
 	}
+	for (xI = 0; xI < xA.length; xI++) compareReqWAvailablePaths()
 	return
 }
-function response(xO, xE) {
-	var yS = xO.url.slice(1)
+function response(yO, xE) {
+	var xS = yO.url.slice(1)
 	, zS = ''
 	function collectData(xS) {
 		zS += xS
 		return
 	}
-	function compareReqRes() {
-		if (yS) redirect(yS, JSON.parse(zS), xE)
+	function compareReqWRes() {
+		if (xS) redirect(xS, JSON.parse(zS), xE)
 		else xE.send(JSON.parse(zS))
 		return
 	}
-	function processGet(xE) {
+	function process(xE) {
 		xE.setEncoding('utf8')
 		xE.on('data', collectData)
-		xE.on('end', compareReqRes)
+		xE.on('end', compareReqWRes)
 		return
 	}
-	function errMsg(xO) {
-		console.log('error:\n' + JSON.stringify(xO, null, 4))
+	function errMsg(yO) {
+		console.log('error:\n' + JSON.stringify(yO, null, 4))
 		return
 	}
-	yE.get(xS, processGet).on('error', errMsg)
+	yE.get(xO.dynDataLoc, process).on('error', errMsg)
 	return
 }
 function dynIO() {
-	var xS = process.env.PORT || 80
+	var xS = process.env.PORT || xO.port
 	xE.listen(xS, function() {
 		console.log('notice:\nlistening on ' + xS)
 		return

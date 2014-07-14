@@ -1,0 +1,9 @@
+{
+	"paths": [[ 
+		".jshintrc"
+		, "https://raw.githubusercontent.com/bestape/.0.sh-project/master/.jshintrc"
+	] , [
+		"lineNbr"
+		, "https://raw.githubusercontent.com/bestape/.0.sh-project/master/lineNbr.js"
+	]]
+}
