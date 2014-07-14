@@ -2,8 +2,8 @@
 // init IO <-- identity element, metadata, header, 0
 var xE = require('express')()
 , xO = require('./posit.json')
-, yO = require('./data.json') 
 , xS = process.env.PORT || xO.port
+, yO = require('./data.json') 
 // events <-- operative element, data, body, x
 function dynIO() {
 	xE.listen(xS, function() {
