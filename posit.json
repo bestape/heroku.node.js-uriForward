@@ -1,4 +1,4 @@
 {
 	"port": 8080
-	, "dynDataLoc": "http://dyndata.bestape.net:4430"
+	, "dynDataLoc": "<DYNDATA_DESTINATION_URL>"
 }

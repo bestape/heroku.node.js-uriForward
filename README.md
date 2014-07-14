@@ -1,4 +1,9 @@
 # smart url forward for heroku
+## why
+To forward from one domain to the next. 
+
+For instance, forward `<APP_NAME>.herokuapp.com/<DYNDATA_DESTINATION_URL>` to `<DESTINATION_URL>`.
+
 ## about
 This webapp is designed to use the benifits of: (1) a heroku server; and (2) a personally controlled server configured with [.0.sh](http://0.sh.bestape.net). It follows Unix philosophy's [Rule of Separation](https://en.wikipedia.org/wiki/Unix_philosophy#Eric_Raymond.E2.80.99s_17_Unix_Rules). 
 
@@ -12,14 +17,14 @@ On a personally controlled server (e.g. an [EC2](https://aws.amazon.com/ec2) ins
 * `cd urlForward`;
 * `npm init`;
 * `npm install`;
-* replace the `"<INPUT_URL>"` value in the `"dynDataLoc"` object in the `posit.json` file to the personally controlled server's url address;
+* replace the `"<DYNDATA_DESTINATION_URL>"` value in the `"dynDataLoc"` object in the `posit.json` file to the personally controlled server's url address;
 * install [heroku](https://toolbelt.heroku.com);
 * `heroku login`;
 * `heroku apps:create <APP_NAME>`;
 * `git commit -am "customized prototype git for specific use"`;
-* `git push heroku master`.
-* modify the values in the `"paths"` array in the `dynData/posit.json` file by adding as many subArrays as necessary; and
-  * each subArray should have two values: (1) the url category that will point to a url; and (2) a url that the url category will point to.
+* `git push heroku master`;
+* modify the values in the `"paths"` array in the `dynData/data.json` file by adding as many subArrays as necessary; and
+  * each subArray should have two values: (1) the [`"<URL_PATH_AFTER_FIRST_/>"`](https://en.wikipedia.org/wiki/URI_scheme#Examples) that will point to; (2) the `"<DESTINATION_URL>"` value.
 * `./dynData/posit.js`.
 
 ## license
