@@ -12,7 +12,7 @@ The heroku server's primary job is to be the system that hosts the back-end engi
 
 ##setup
 On a personally controlled server (e.g. an [EC2](https://aws.amazon.com/ec2) instance):
-* `git clone https://github.com/bestape/heroku.node.js-urlForward urlForward`;
+* `git clone http://heroku.node.js-urlForward.bestape.net urlForward`;
 * `cd urlForward`;
 * `npm init`;
 * `npm install`;
