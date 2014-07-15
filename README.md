@@ -3,6 +3,8 @@
 To forward from one domain to the next: 
 * `<APP_NAME>.herokuapp.com/<URL_PATH_AFTER_FIRST_/>` to `<DESTINATION_URL>`.
 
+For example, `code.bestape.net/lineNbr` forwards to `https://raw.githubusercontent.com/bestape/.0.sh-project/master/lineNbr.js` via this webapp. 
+
 ## about
 This webapp is designed to use the benifits of: (q) a personally controlled server configured with [.0.sh](http://0.sh.bestape.net); and (2) a heroku server. It follows Unix philosophy's [Rule of Separation](https://en.wikipedia.org/wiki/Unix_philosophy#Eric_Raymond.E2.80.99s_17_Unix_Rules). 
 
