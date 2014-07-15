@@ -13,7 +13,7 @@ The personally controlled server's primary job is to host the `dynDns/data.json`
 The heroku server's primary job is to be the system that hosts the back-end engine. 
 
 ##setup
-On a personally controlled server (e.g. an [EC2](https://aws.amazon.com/ec2) instance):
+On a personally controlled server (e.g. an [EC2](https://aws.amazon.com/ec2) instance), run:
 * `git clone http://heroku.node.js-urlForward.bestape.net urlForward`;
 * `cd urlForward`;
 * `npm init`;
@@ -24,8 +24,8 @@ On a personally controlled server (e.g. an [EC2](https://aws.amazon.com/ec2) ins
 * `heroku apps:create <APP_NAME>`;
 * `git commit -am "customized prototype git for specific use"`;
 * `git push heroku master`;
-* replace the `["<URL_PATH_AFTER_FIRST_/>", "<DESTINATION_URL>"]`values in the `"paths"` array's subArray in the `dynData/data.json` file with intended use data;
-* add as many additional subArrays in the `dynData/data.json` file's `"path"` array as necessary; and
+* replace the `["<URL_PATH_AFTER_FIRST_/>", "<DESTINATION_URL>"]` values in the `"paths"` array's subArray in the `dynData/data.json` file with intended use data;
+* add as many additional subArrays in the `dynData/data.json` file's `"path"` array as necessary and whenever needed; and
   * each subArray should have two values: (1) the [`"<URL_PATH_AFTER_FIRST_/>"`](https://en.wikipedia.org/wiki/URI_scheme#Examples) that will point to; (2) the `"<DESTINATION_URL>"` value.
 * `./dynData/posit.js`.
 
