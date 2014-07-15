@@ -13,14 +13,14 @@
     "node": "0.8.x",
     "npm": "1.1.x"
   },
-  "author": "Kyle MacLean Smith",
+  "author": "bestape",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bestape/heroku.node.js-uriForward"
+    "url": "https://github.com/bestape/heroku.node.js-urlForward"
   },
   "bugs": {
-    "url": "https://github.com/bestape/heroku.node.js-uriForward/issues"
+    "url": "https://github.com/bestape/heroku.node.js-urlForward/issues"
   },
-  "homepage": "https://github.com/bestape/heroku.node.js-uriForward"
+  "homepage": "http://heroku.node.js-uriForward.bestape.net"
 }
