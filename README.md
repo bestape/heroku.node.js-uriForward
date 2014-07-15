@@ -24,7 +24,8 @@ On a personally controlled server (e.g. an [EC2](https://aws.amazon.com/ec2) ins
 * `heroku apps:create <APP_NAME>`;
 * `git commit -am "customized prototype git for specific use"`;
 * `git push heroku master`;
-* modify the values in the `"paths"` array in the `dynData/data.json` file by adding as many subArrays as necessary; and
+* replace the `["<URL_PATH_AFTER_FIRST_/>", "<DESTINATION_URL>"]`values in the `"paths"` array's subArray in the `dynData/data.json` file with intended use data;
+* add as many additional subArrays in the `dynData/data.json` file's `"path"` array as necessary; and
   * each subArray should have two values: (1) the [`"<URL_PATH_AFTER_FIRST_/>"`](https://en.wikipedia.org/wiki/URI_scheme#Examples) that will point to; (2) the `"<DESTINATION_URL>"` value.
 * `./dynData/posit.js`.
 
