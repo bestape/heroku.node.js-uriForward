@@ -6,7 +6,7 @@ To forward from one domain to the next:
 For example, `code.bestape.net/lineNbr` forwards to `https://raw.githubusercontent.com/bestape/.0.sh-project/master/lineNbr.js` via this webapp. 
 
 ## about
-This webapp is designed to use the benifits of: (q) a personally controlled server configured with [.0.sh](http://0.sh.bestape.net); and (2) a heroku server. It follows Unix philosophy's [Rule of Separation](https://en.wikipedia.org/wiki/Unix_philosophy#Eric_Raymond.E2.80.99s_17_Unix_Rules). 
+This webapp is designed to use the benifits of: (1) a personally controlled server configured with [.0.sh](http://0.sh.bestape.net); and (2) a heroku server. It follows Unix philosophy's [Rule of Separation](https://en.wikipedia.org/wiki/Unix_philosophy#Eric_Raymond.E2.80.99s_17_Unix_Rules). 
 
 The personally controlled server's primary job is to host the `dynDns/data.json` file on the Web. `dynDns/data.json` is what the user manually edits on a going forward basis to modify the webapp's setting. This system is the front-end interface.  
 
