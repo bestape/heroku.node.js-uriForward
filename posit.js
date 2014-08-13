@@ -42,15 +42,14 @@ function responseToClient1(x1o, x1e) {
 	}
 	function processGetAnswer112() {
 		y1o = JSON.parse(y1s)
-		y0o = y1o
+		y0o = JSON.parse(y1s)
 		if (y1o[0].publish) {
 			x1e.set('Content-Disposition', 'inline; filename="' + y1o[0].name + '"')
 			delete y1o[0]
-			y0o = y1o
 			processClientReq1121()
 		}
-		else if (x0o.offlineMessage.type === 'text') x1e.status(404).send(x0o.offlineMessage.content)
-		else x1e.status(404).sendfile(x0o.offlineMessage.content)
+		else if (x0o.sansContent.type === 'text') x1e.status(404).send(x0o.sansContent.content)
+		else x1e.status(404).sendfile(x0o.sansContent.content)
 		return
 	}
 	function processGetReq11(x11e) {
@@ -61,7 +60,11 @@ function responseToClient1(x1o, x1e) {
 	}
 	function errMsg12(x12o) {
 		console.warn('error on ' + new Date() + ':\n' + JSON.stringify(x12o, null, 4))
-		if (y0o) x1e.send(JSON.stringify(y0o, null, 4))
+		if (y0o && y0o[0].publish) {
+			y1o = JSON.parse(JSON.stringify(y0o))
+			delete y1o[0]
+			x1e.send(JSON.stringify(y1o, null, 4))
+		}
 		else if (x0o.sansContent.type === 'text') x1e.status(404).send(x0o.sansContent.content)
 		else x1e.status(404).sendfile(x0o.sansContent.content)
 		return
