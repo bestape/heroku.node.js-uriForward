@@ -7,14 +7,14 @@ var xE = require('express')()
 // events <-- operative element, data, body, x
 function dynIO() {
 	xE.listen(xS, function() {
-		console.log("notice:\nlistening on " + xS)
+		console.log('notice on ' + new Date() + ':\nlistening on ' + xS)
 		return
 	})
 	return
 }
 xE.use(function (xO, xE, yE) {
 	xE.send(yO)
-	console.log('notice:\nres to req with data.json file on ' + new Date())
+	console.log('notice on ' + new Date() + ':\nres to req with data.json file')
 	return
 })
 dynIO()

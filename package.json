@@ -1,13 +1,14 @@
 {
   "name": "uriForward",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a smart forwarding service for heroku deploy",
-  "main": "web.js",
+  "main": "posit.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "express": "3.x"
+    "express": "~4.8.3",
+    "serve-favicon": "~2.0.1"
   },
   "engines": {
     "node": "0.8.x",

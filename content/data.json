@@ -1,0 +1,10 @@
+{
+	"0": { 
+		"publish": true
+		, "name": "<FILE_NAME>"
+	}
+	, "paths": [[ 
+		"<URL_PATH_AFTER_FIRST_/>"
+		, "<DESTINATION_URL>"
+	]]
+}
