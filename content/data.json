@@ -1,10 +1,10 @@
 {
 	"0": { 
-		"publish": true
+		"exists": true
 		, "name": "<FILE_NAME>"
 	}
 	, "paths": [[ 
-		"<URL_PATH_AFTER_FIRST_/>"
+		"<URN_PATH_AFTER_FIRST_/>"
 		, "<DESTINATION_URL>"
 	]]
 }

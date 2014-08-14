@@ -7,17 +7,17 @@ var x0o = require('./posit.json')
 , x0s = '.actual'
 , x0i
 // events == operative element, data, body, x
-function childProcessError100(x100o) {
-	console.warn(JSON.strigify(x100o, null, 4))
+function childProcessError101(x101o) {
+	console.warn(JSON.strigify(x101o, null, 4))
 	return
 }
 function makeProtoActive11(x11s) {
-	x0f('mv', [x11s, x11s + x0s], {stdio: 'inherit'}).on('error', childProcessError100)
-	x0f('cp', [x11s + '.proto', x11s], {stdio: 'inherit'}).on('error', childProcessError100)
+	x0f('mv', [x11s, x11s + x0s], {stdio: 'inherit'}).on('error', childProcessError101)
+	x0f('cp', [x11s + '.proto', x11s], {stdio: 'inherit'}).on('error', childProcessError101)
 	return
 }
 function makeActualActive12(x12s) {
-	x0f('mv', [x12s + x0s, x12s], {stdio: 'inherit'}).on('error', childProcessError100)
+	x0f('mv', [x12s + x0s, x12s], {stdio: 'inherit'}).on('error', childProcessError101)
 	return
 }
 function seeIfActualAlreadyExists1(x1s) {

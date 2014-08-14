@@ -1,11 +1,11 @@
 {
 	"port": 8080
 	, "favicon": {
-		"local": true
+		"internal": true
 		, "uri": "content/favicon.ico"
 	}
 	, "content": {
-		"local": false
+		"internal": false
 		, "uri": "<CONTENT_DESTINATION_URL>"
 	}
 	, "sansContent": {
