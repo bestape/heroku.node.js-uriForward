@@ -8,7 +8,7 @@ For example:
 * [code.bestape.net](http://code.bestape.net) provides a json object that lists the [urn](https://en.wikipedia.org/wiki/Uniform_resource_name) paths available at code.bestape.net. 
 
 ## about
-This webapp is designed to use the benifits of: (1) a personally controlled server configured with [.0.sh](http://0.sh.bestape.net); and (2) a heroku server. It follows Unix philosophy's [Rule of Separation](https://en.wikipedia.org/wiki/Unix_philosophy#Eric_Raymond.E2.80.99s_17_Unix_Rules). 
+This webapp is designed to use the benifits of: (1) a personally controlled server configured with [.0.sh](http://0.sh.bestape.net); and (2) a [heroku server](https://en.wikipedia.org/wiki/Heroku). It follows Unix philosophy's [Rule of Separation](https://en.wikipedia.org/wiki/Unix_philosophy#Eric_Raymond.E2.80.99s_17_Unix_Rules). 
 
 The personally controlled server's primary job is to publish the `content/data.json` file for the heroku server. `content/data.json` is what the user manually edits on a going forward basis to modify the webapp's setting. This system is the front-end interface. It provides the webapp's data.
 
@@ -63,5 +63,5 @@ The personally controlled server's git can be used as a [revision control](https
 * use the `urlForward` folder for the generic versions of the webapp that can be used as the prototype for various circumstances; and
  * The git commits in this folder are theoretical-only developer versions of the webapp.
 * create a clone of the `urlForward` folder with `cp -r urlForward urlForward.publish` and use the `urlForward.publish` folder for the specific-only instance versions of the webapp;
- * The git commits in this folder are applied-only versions of the webapp that are runnable.
+ * The git commits in this folder are applied-only versions of the webapp that are runnable; and
  * `git push heroku master --force` has to be used if the `urlForward` prototype used by the heroku server is different from the `urlForward` prototype used by `urlForward.publish`. 

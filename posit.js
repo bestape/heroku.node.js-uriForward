@@ -90,43 +90,43 @@ if (x0o.favicon.internal) y0f.stat(x0o.favicon.uri, function (x00o) {
 })
 clientTriggeredInterface2()
 /** notes
- + Function names convey pair information; and
+ * Function names convey pair information; and
    - 1st position consists of a qualitative (cf. absolute, specified) declarative "statement" in natural language;
    - 2nd position consists of a quantitative (cf. relative, generalized) "magnitude".
-     + Why?
+     * Why?
        - To know where functions are in relation to other functions from an objective position.
-	 + what; and
+	 * what; and
 	   - A base ten scale that enumerates function scope within the script;
        - the 0 order of magnitude is the internal scope (cf. micro, addition index, specific) that functions are created in; and
 	   - orders of magnitude greater than 0 are the external scope (cf. macro, multiplication index, generic) that functions are created in.
-	 + how?
+	 * how?
 	   - A Fuction's internal scope (cf. name) is: 
-	     + its 1-9 naturally ordered position compared to the other functions with the same external scope; and
-		 + as such, each magnitudinal unit can store a maximum of 9 functions.
+	     * its 1-9 naturally ordered position compared to the other functions with the same external scope; and
+		 * as such, each magnitudinal unit can store a maximum of 9 functions.
 	   - A function's external scope, if nested in just one "master" function (cf. mono-caused, slave), is: 
-	     + its master function's internal and external scope.
+	     * its master function's internal and external scope.
 	   - A function's external scope, if nested in many "parent" functions (cf. poly-caused, child), is: 
-	     + 0 on any level it is called by more than one parent function. 
- + Variable names convey treble information;
+	     * 0 on any level it is called by more than one parent function. 
+ * Variable names convey treble information;
    - 1st position consists of an external & generic Cartesian location;
-     + Why;
+     * Why;
 	   - So that the interaction between variables in every function is easy to imagine.
-	 + what; and
+	 * what; and
        - "x", "y" or "z".
-     + how?
+     * how?
        - By recognizing that up to three distinct dimensions is the natural spatial plane of the mind; and
 	   - as such, any function that requires more dimensions should be split into smaller component functions that can fit in natural space.
    - 2nd position consists of an external & specific function scope scale magnitude; and
-     + Why;
+     * Why;
        - To be able to quickly reference the function in which variables are initially created.
-	 + what; and
+	 * what; and
 	   - The same unique number within the script that variables' parent function defines as its magnitude.
-	 + how?
+	 * how?
 	   - By matching numbers along a fixed real number base ten linear scale.
    - 3rd position consists of an internal & generic code for the types of values that variables can be keys for.
-     + Why;
+     * Why;
        - To know variables' general properties.
-	 + what; and
+	 * what; and
        - a = array;
 	   - b = boolean;
 	   - e = event;
@@ -135,6 +135,6 @@ clientTriggeredInterface2()
 	   - o = object;
 	   - s = string; and
        - u = unknown.
-	 + how?
+	 * how?
 	   - By free association.
 **/
