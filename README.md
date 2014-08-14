@@ -14,7 +14,7 @@ The personally controlled server's primary job is to publish the `content/data.j
 
 The heroku server's primary job is to be the system that hosts the back-end engine. It provides the webapp's logic processing of data into information. It is the server that distributes and communicates the published content to the public.
 
-To turn the heroku server on/off or change the paths it redirects to, the desired effects should be written in the personally controlled server's `content/data.json` and passed (cf. published) to the heroku server. The heroku server will remember the content that was most recently passed to it so the personally controlled server does not need to host the content once its published on the heroku server.
+To turn the heroku server on/off or change the paths it redirects to, the desired effects should be written in the personally controlled server's `content/data.json` and passed (cf. published) to the heroku server. The heroku server will remember the content that was most recently passed to it so the personally controlled server does not need to continually host the content once its published on the heroku server.
 
 ##setup
 On a personally controlled server (e.g. an [EC2](https://aws.amazon.com/ec2) instance), run the following commands.
@@ -29,9 +29,7 @@ To customize urlForward:
 * In the `posit.json` file, replace the `"<CONTENT_DESTINATION_URL>"` value within the `"uri"` object, that is within the `"content"` object, to the personally controlled server's url address;
 * In the `content/data.json` file, replace the `["<URN_PATH_AFTER_FIRST_/>", "<DESTINATION_URL>"]` values in the `"paths"` array's 0 key with specific and applied urn and url information; and
  * Add as many additional vales to in the array as needed; and
- * each value in the `"paths"` array must be an array with two values: 
-  1. the `"<URN_PATH_AFTER_FIRST_/>"` that will point to; and 
-  2. the `"<DESTINATION_URL>"` value.
+ * each value in the `"paths"` array must be a paired array with key 0 a `"<URN_PATH_AFTER_FIRST_/>"` value and key 1 a `"<DESTINATION_URL>"` value.
 * In the `./content/posit.json` file, switch the `"port"` object to the port the personally controlled server will host from.
 
 If no prior heroku work exists:
@@ -63,7 +61,7 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 The personally controlled server's git can be used as a [revision control](https://en.wikipedia.org/wiki/Source_code_management) hub for the webapp's front-end and back-end content: 
 * Run `./publicPrivateSwitch.js` to change between the generic and specific versions of the webapp; 
 * use the `urlForward` folder for the generic versions of the webapp that can be used as the prototype for various circumstances; and
- * The git commits in this folder are theoretical-only versions of the webapp.
-* create a clone of the `urlForward` folder with `cp -r urlForward urlForward.publish` and use the `urlForward.publish` folder for the specific versions of the webapp that can be used to actually run webapp.
- * The git commits in this folder are applied-only versions of the webapp.
+ * The git commits in this folder are theoretical-only developer versions of the webapp.
+* create a clone of the `urlForward` folder with `cp -r urlForward urlForward.publish` and use the `urlForward.publish` folder for the specific-only instance versions of the webapp;
+ * The git commits in this folder are applied-only versions of the webapp that are runnable.
  * `git push heroku master --force` has to be used if the `urlForward` prototype used by the heroku server is different from the `urlForward` prototype used by `urlForward.publish`. 
