@@ -1,4 +1,5 @@
 {
 	"port": 4430
 	, "content": "data.json"
+	, "whitelist": false
 }

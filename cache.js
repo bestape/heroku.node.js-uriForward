@@ -6,7 +6,7 @@ var X0f = require('fs')
 x0p._transform = function processCacheRecord1(x1r) {
 	var x1f, x1p = this, x1b = false
 	, y1o = JSON.parse(new Buffer(x1r).toString())
-	function sendNoFileData001() {
+	function sendNoFileData10() {
 		x1p.push('{"0": {"exists": false}}')
 		X0f.unlink(x0s)
 		process.exit(0)
@@ -18,7 +18,7 @@ x0p._transform = function processCacheRecord1(x1r) {
 		return
 	}
 	function finishCaching13() {
-		(x1b) ? process.exit(0) : sendNoFileData001()
+		(x1b) ? process.exit(0) : sendNoFileData10()
 		return
 	}
 	if (y1o[0].exists) {
@@ -26,11 +26,11 @@ x0p._transform = function processCacheRecord1(x1r) {
 		x1f.write(JSON.stringify(y1o))
 		this.push(JSON.stringify(y1o))
 	}
-	else if (y1o[0].exists === false) sendNoFileData001()
+	else if (y1o[0].exists === false) sendNoFileData10()
 	else if (y1o[0].cache) {
 		x1f = X0f.createReadStream(x0s)
 		x1f.setEncoding('utf8')
-		x1f.on('error', sendNoFileData001).on('data', collectAndSendFileData12).on('end', finishCaching13)
+		x1f.on('error', sendNoFileData10).on('data', collectAndSendFileData12).on('end', finishCaching13)
 	}
 	else {
 		x1f = X0f.createWriteStream(x0s, {flags: 'a'})

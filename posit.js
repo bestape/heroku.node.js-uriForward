@@ -32,10 +32,15 @@ function processClientReq141(x141s, x141e, x141o) {
 	return
 }
 function responseToClient1(x1o, x1e) {
-	var x1f, x1s = ''
+	var x1f, x1s = '', x1b = false
 	, y1s = x1o.url.slice(1)
 	, x1p = require('child_process').spawn('node', ['cache.js'])
 	x1p.stdout.setEncoding('utf8')
+	function processWithoutGetReq10(x10o) {
+		console.warn('error on ' + new Date() + ':\n' + JSON.stringify(x10o, null, 4))
+		x1p.stdin.write('{"0": {"cache": true}}')
+		return
+	}
 	function sendFavicon111(x, y) {
 		if (x) console.warn(x)
 		else {
@@ -75,21 +80,17 @@ function responseToClient1(x1o, x1e) {
 		return
 	}
 	function collectGetReqData151(x151s) {
+		x1b = true
 		x1p.stdin.write(x151s)
 		return
 	}
 	function processGetAnswer152() {
-		x1p.stdin.end()
+		x1b ? x1p.stdin.end() : processWithoutGetReq10(x0o.content.uri + ' responded but did not send any data')
 		return
 	}
 	function processGetReq15(x15e) {
 		x15e.setEncoding('utf8')
 		x15e.on('data', collectGetReqData151).on('end', processGetAnswer152)
-		return
-	}
-	function processWithoutGetReq16(x16o) {
-		console.warn('error on ' + new Date() + ':\n' + JSON.stringify(x16o, null, 4))
-		x1p.stdin.write('{"0": {"cache": true}}')
 		return
 	}
 	if (y1s === 'favicon.ico') getFavicon11()
@@ -99,7 +100,7 @@ function responseToClient1(x1o, x1e) {
 		x1p.stderr.on('data', cachingScriptError12)
 		x1p.stdout.on('data', getCacheInfo13)
 		x1p.on('close', processCacheInfo14)
-		if (!x0o.content.internal) X0e.get(x0o.content.uri, processGetReq15).on('error', processWithoutGetReq16)
+		if (!x0o.content.internal) X0e.get(x0o.content.uri, processGetReq15).on('error', processWithoutGetReq10)
 	}
 	return
 }
