@@ -7,4 +7,7 @@
 		"<URN_PATH_AFTER_FIRST_/>"
 		, "<DESTINATION_URL>"
 	]]
+	, "objects": [ 
+		"favicon.ico"
+	]	
 }
