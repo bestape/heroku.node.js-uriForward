@@ -7,34 +7,47 @@ var X0f = require('fs')
 , x0s = process.env.PORT || x0o.port
 // body
 function responseToClient1(x1o, x1e) {
-	var x1b = false
+	var x1b = false, y1b = true
 	, x1f = X0f.createReadStream(__dirname + '/' + x0o.content)
-	function errorGettingFile11(x11o) {
-		console.log('error at ' + new Date() + ':\n' + JSON.stringify(x11o, null, 4))
+	function determineIfAllowedClient11() {
+		var x11i
+		for (x11i = 0; x11i < x0o.whitelist.length; x11i++) {
+			if (x0o.whitelist[x11i] === x1o.connection.remoteAddress) return true
+			else if (x0o.whitelist.length - 1 === x11i) return false
+		}
+	}
+	function errorGettingFile12(x12o) {
 		x1e.statusCode = 404
 		x1e.end()
+		console.warn('error on ' + new Date() + ':\n' + JSON.stringify(x12o, null, 4))
 		return
 	}
-	function collectAndSendFileData12(x12r) {
+	function collectAndSendFileData13(x13r) {
 		x1b = true
-		x1e.write(x12r)
+		x1e.write(x13r)
 		return
 	}
-	function finishSendingFileData13() {
+	function finishSendingFileData14() {
 		if (x1b) {
 			x1e.statusCode = 200
 			console.log('notice on ' + new Date() + ':\nresponded to request from ' + x1o.connection.remoteAddress + ' with the ' + x0o.content + ' JSON file')
 		}
 		else {
 			x1e.statusCode = 404
-			console.log('error at ' + new Date() + ':\n' + JSON.stringify(x0o.content, null, 4))
+			console.warn('error on ' + new Date() + ':\n' + JSON.stringify(x0o.content, null, 4))
 		}
 		x1e.end()
 		return
 	}
 	x1e.setHeader('Content-Type', 'application/json')
 	x1e.setHeader('Date', new Date())
-	x1f.on('error', errorGettingFile11).on('data', collectAndSendFileData12).on('end', finishSendingFileData13)
+	if (x0o.whitelist) y1b = determineIfAllowedClient()
+	if (y1b) x1f.on('error', errorGettingFile12).on('data', collectAndSendFileData13).on('end', finishSendingFileData14)
+	else {
+		x1e.statusCode = 404
+		x1e.end()
+		console.log('on ' + new Date() + ':\nblocked non-whitelist ' + x1o.connection.remoteAddress)
+	}
 	return
 }
 function beginServiceNotice2() {
