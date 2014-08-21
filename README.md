@@ -14,7 +14,7 @@ The personally controlled server's primary job is to publish the `content/data.j
 
 The heroku server's primary job is to be the system that hosts the back-end engine. It provides the webapp's logic processing of data into information. It is the server that distributes and communicates the published content to the public.
 
-To turn the heroku server on/off or change the paths it redirects to, the desired effects should be written in the personally controlled server's `content/data.json` and passed (cf. published) to the heroku server. The personally controlled server does not need to uninterruptedly serve the `content/data.json` file to the heroku server. However, since heroku uses an entirely [ephemeral filesystem](https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem), the personally controlled server must serve the `content/data.json` file to the heroku server whenever the heroku server wakes from hibernation or otherwise erases its dynamic storage.
+To turn the heroku server on/off or change the paths it redirects to, the desired effects should be written in the personally controlled server's `content/data.json` files and passed (cf. published) to the heroku server. The personally controlled server does not need to uninterruptedly serve the `content/data.json` file to the heroku server. However, since heroku uses an entirely [ephemeral filesystem](https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem), the personally controlled server must serve the `content/data.json` file to the heroku server whenever the heroku server wakes from hibernation or otherwise erases its dynamic storage.
 
 ##setup
 On a personally controlled server (e.g. an [EC2](https://aws.amazon.com/ec2) instance), run the following commands.
