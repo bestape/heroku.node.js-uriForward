@@ -1,91 +1,111 @@
 #! /usr/bin/env node
-// init IO == identity element, metadata, header, 0
-var x0o = require('./posit.json')
-, x0e = require('express')()
-, x0f = require('serve-favicon')
-, y0f = require('fs')
-, y0e = require('http')
-, y0o = null
-// events == operative element, data, body, x
-function redirectClient100111(x100111s, x100111e, x100111o) {
-	var x100111i, x100111b 
-	, x100111a = x100111o.paths
-	function compareReqWAvailablePaths1001111() {
-		if (x100111s === x100111a[x100111i][0]) {
-			x100111e.redirect(x100111a[x100111i][1])
+// head
+var X0f = require('fs')
+, X0e = require('http')
+, x0e = X0e.createServer()
+, x0o = require('./posit.json')
+, x0s = process.env.PORT || x0o.port
+// body
+function processClientReq141(x141s, x141e, x141o) {
+	var x141i, x141b
+	, x141a = x141o.paths
+	function compareReqWAvailablePaths1411() {
+		if (x141s === x141a[x141i][0]) {
+			x141e.statusCode = 301
+			x141e.setHeader('Location', x141a[x141i][1])
+			x141e.end()
 			return true
 		}
-		else if (x100111a.length - 1 === x100111i) {
-			x100111e.send(JSON.stringify(x100111o, null, 4))
+		else if (x141a.length - 1 === x141i) {
+			x141e.statusCode = 404
+			x141e.end(JSON.stringify(x141o, null, 4))
 			return false
 		}
 	}
-	for (x100111i = 0; x100111i < x100111a.length; x100111i++) {
-		x100111b = compareReqWAvailablePaths1001111()
-		if (x100111b) break
+	if (x141s) {
+		for (x141i = 0; x141i < x141a.length; x141i++) {
+			x141b = compareReqWAvailablePaths1411()
+			if (x141b) break
+		}
 	}
+	else x141e.end(JSON.stringify(x141o, null, 4))
 	return
 }
 function responseToClient1(x1o, x1e) {
-	var x1s = x1o.url.slice(1)
-	, y1s = ''
-	, y1o = null
-	function processClientReq10011() {
-		if (x1s) redirectClient100111(x1s, x1e, y1o)
-		else x1e.send(JSON.stringify(y1o, null, 4))
-		return
-	}
-	function processGetAnswer1001() {
-		if (y1o[0].exists) {
-			x1e.set('Content-Disposition', 'inline; filename="' + y1o[0].name + '"')
-			delete y1o[0]
-			processClientReq10011()
+	var x1f, x1s = ''
+	, y1s = x1o.url.slice(1)
+	, x1p = require('child_process').spawn('node', ['cache.js'])
+	x1p.stdout.setEncoding('utf8')
+	function sendFavicon111(x, y) {
+		if (x) console.warn(x)
+		else {
+			x1e.setHeader('Content-Type', 'image/x-icon')
+			x1e.statusCode = 200
+			x1e.end(y)
 		}
-		else if (x0o.sansContent.type === 'text') x1e.status(404).send(x0o.sansContent.content)
-		else x1e.status(404).sendfile(x0o.sansContent.content)
 		return
 	}
-	function collectGetReqData111(x111s) {
-		y1s += x111s
+	function getFavicon11() {
+		x1f = X0f.readFile(__dirname + '/content/favicon.ico', sendFavicon111)
 		return
 	}
-	function compileGetJsonObject112() {
-		y1o = JSON.parse(y1s)
-		y0o = JSON.parse(y1s)
-		processGetAnswer1001()
+	function cachingScriptError12(x12r) {
+		console.warn(new Buffer(x12r).toString())
 		return
 	}
-	function processGetReq11(x11e) {
-		x11e.setEncoding('utf8')
-		x11e.on('data', collectGetReqData111)
-		x11e.on('end', compileGetJsonObject112)
+	function getCacheInfo13(x13s) {
+		x1s += x13s
 		return
 	}
-	function processWithoutGetReq12(x12o) {
-		console.warn('error on ' + new Date() + ':\n' + JSON.stringify(x12o, null, 4))
-		if (y0o && y0o[0].exists) {
-			y1o = JSON.parse(JSON.stringify(y0o))
-			processGetAnswer1001()
+	function processCacheInfo14() {
+		var x14o = JSON.parse(x1s)
+		if (x14o[0].exists) {
+			x1e.setHeader('Content-Disposition', 'inline; filename="' + x14o[0].name + '"')
+			delete x14o[0]
+			processClientReq141(y1s, x1e, x14o)
 		}
-		else if (x0o.sansContent.type === 'text') x1e.status(404).send(x0o.sansContent.content)
-		else x1e.status(404).sendfile(x0o.sansContent.content)
+		else if (x0o.sansContent.type === 'text') {
+			x1e.statusCode = 404
+			x1e.end(x0o.sansContent.content)
+		}
+		else {
+			x1e.statusCode = 404
+			x1e.end('not operational')
+		}
 		return
 	}
-	x1e.set({'Content-Type': 'application/json', 'Date': new Date()})
-	if (!x0o.content.internal) y0e.get(x0o.content.uri, processGetReq11).on('error', processWithoutGetReq12)
+	function collectGetReqData151(x151s) {
+		x1p.stdin.write(x151s)
+		return
+	}
+	function processGetAnswer152() {
+		x1p.stdin.end()
+		return
+	}
+	function processGetReq15(x15e) {
+		x15e.setEncoding('utf8')
+		x15e.on('data', collectGetReqData151).on('end', processGetAnswer152)
+		return
+	}
+	function processWithoutGetReq16(x16o) {
+		console.warn('error on ' + new Date() + ':\n' + JSON.stringify(x16o, null, 4))
+		x1p.stdin.write('{"0": {"cache": true}}')
+		return
+	}
+	if (y1s === 'favicon.ico') getFavicon11()
+	else {
+		x1e.setHeader('Content-Type', 'application/json')
+		x1e.setHeader('Date', new Date())
+		x1p.stderr.on('data', cachingScriptError12)
+		x1p.stdout.on('data', getCacheInfo13)
+		x1p.on('close', processCacheInfo14)
+		if (!x0o.content.internal) X0e.get(x0o.content.uri, processGetReq15).on('error', processWithoutGetReq16)
+	}
 	return
 }
-function clientTriggeredInterface2() {
-	var x2s = process.env.PORT || x0o.port
-	x0e.get('/*', responseToClient1)
-	x0e.listen(x2s, function() {
-		console.log('notice on ' + new Date() + ':\nlistening on ' + x2s)
-		return
-	})
+function beginServiceNotice2() {
+	console.log('notice on ' + new Date() + ':\nlistening on ' + x0s)
 	return
 }
-if (x0o.favicon.internal) y0f.stat(x0o.favicon.uri, function (x00o) { 
-	if (!x00o) x0e.use(x0f(x0o.favicon.uri)) 
-	return
-})
-clientTriggeredInterface2()
+x0e.on('request', responseToClient1)
+x0e.listen(x0s, beginServiceNotice2)

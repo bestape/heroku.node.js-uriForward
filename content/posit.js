@@ -1,20 +1,45 @@
 #! /usr/bin/env node
-// init IO <-- identity element, metadata, header, 0
-var xE = require('express')()
-, xO = require('./posit.json')
-, xS = process.env.PORT || xO.port
-, yO = require('./data.json') 
-// events <-- operative element, data, body, x
-function dynIO() {
-	xE.listen(xS, function() {
-		console.log('notice on ' + new Date() + ':\nlistening on ' + xS)
+// head
+var X0f = require('fs')
+, X0e = require('http')
+, x0e = X0e.createServer()
+, x0o = require('./posit.json')
+, x0s = process.env.PORT || x0o.port
+// body
+function responseToClient1(x1o, x1e) {
+	var x1b = false
+	, x1f = X0f.createReadStream(__dirname + '/' + x0o.content)
+	function errorGettingFile11(x11o) {
+		console.log('error at ' + new Date() + ':\n' + JSON.stringify(x11o, null, 4))
+		x1e.statusCode = 404
+		x1e.end()
 		return
-	})
+	}
+	function collectAndSendFileData12(x12r) {
+		x1b = true
+		x1e.write(x12r)
+		return
+	}
+	function finishSendingFileData13() {
+		if (x1b) {
+			x1e.statusCode = 200
+			console.log('notice on ' + new Date() + ':\nresponded to request from ' + x1o.connection.remoteAddress + ' with the ' + x0o.content + ' JSON file')
+		}
+		else {
+			x1e.statusCode = 404
+			console.log('error at ' + new Date() + ':\n' + JSON.stringify(x0o.content, null, 4))
+		}
+		x1e.end()
+		return
+	}
+	x1e.setHeader('Content-Type', 'application/json')
+	x1e.setHeader('Date', new Date())
+	x1f.on('error', errorGettingFile11).on('data', collectAndSendFileData12).on('end', finishSendingFileData13)
 	return
 }
-xE.use(function (xO, xE, yE) {
-	xE.send(yO)
-	console.log('notice on ' + new Date() + ':\nres to req with data.json file')
+function beginServiceNotice2() {
+	console.log('notice on ' + new Date() + ':\nlistening on ' + x0s)
 	return
-})
-dynIO()
+}
+x0e.on('request', responseToClient1)
+x0e.listen(x0s, beginServiceNotice2)
