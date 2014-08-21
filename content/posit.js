@@ -41,7 +41,7 @@ function responseToClient1(x1o, x1e) {
 	}
 	x1e.setHeader('Content-Type', 'application/json')
 	x1e.setHeader('Date', new Date())
-	if (x0o.whitelist) y1b = determineIfAllowedClient()
+	if (x0o.whitelist) y1b = determineIfAllowedClient11()
 	if (y1b) x1f.on('error', errorGettingFile12).on('data', collectAndSendFileData13).on('end', finishSendingFileData14)
 	else {
 		x1e.statusCode = 404
