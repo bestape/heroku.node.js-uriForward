@@ -30,7 +30,7 @@ On a personally controlled server (e.g. an [EC2](https://aws.amazon.com/ec2) ins
 * In the `content/data.json` file, replace the `["<URN_PATH_AFTER_FIRST_/>", "<DESTINATION_URL>"]` values in the `"paths"` array's 0 key with specific and applied urn and url information; and
  * Add as many additional vales to in the array as needed; and
  * each value in the `"paths"` array must be a paired array with key 0 a `"<URN_PATH_AFTER_FIRST_/>"` value and key 1 a `"<DESTINATION_URL>"` value.
-* In the `./content/posit.json` file, switch the `"port"` object to the port the personally controlled server will host from.
+* In the `content/posit.json` file, switch the `"port"` object to the port the personally controlled server will host from.
 
 ###if no prior heroku work exists
 * install [heroku](https://toolbelt.heroku.com);
@@ -63,7 +63,7 @@ The personally controlled server's git can be used as a [revision control](https
 * Run `./publicPrivateSwitch.js` to change between the generic and specific versions of the webapp; 
 * use the `urlForward` folder for the generic versions of the webapp that can be used as the prototype for various circumstances; and
  * The git commits in this folder are theoretical-only developer versions of the webapp.
-* create a clone of the `urlForward` folder with `cp -r urlForward urlForward.publish` and use the `urlForward.publish` folder for the specific-only instance versions of the webapp;
+* create a clone of the `urlForward` folder with `cp -r urlForward urlForward.publish` and use the `urlForward.publish` folder for the specific-only instance versions of the webapp.
  * The git commits in this folder are applied-only versions of the webapp that are runnable; and
  * `git push heroku master --force` has to be used if the `urlForward` prototype used by the heroku server is different from the `urlForward` prototype used by `urlForward.publish`. 
 
