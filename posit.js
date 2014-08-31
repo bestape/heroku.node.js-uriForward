@@ -1,8 +1,8 @@
 #! /usr/bin/env node
 // head
-var X0f = require('fs')
-, X0e = require('http')
-, x0e = X0e.createServer()
+var X0F = require('fs')
+, X0E = require('http')
+, x0e = X0E.createServer()
 , x0o = require('./posit.json')
 , x0s = process.env.PORT || x0o.port
 // body
@@ -51,7 +51,7 @@ function responseToClient1(x1o, x1e) {
 		return
 	}
 	function getFavicon11() {
-		x1f = X0f.readFile(__dirname + '/content/favicon.ico', sendFavicon111)
+		x1f = X0F.readFile(__dirname + '/content/favicon.ico', sendFavicon111)
 		return
 	}
 	function cachingScriptError12(x12r) {
@@ -100,7 +100,7 @@ function responseToClient1(x1o, x1e) {
 		x1p.stderr.on('data', cachingScriptError12)
 		x1p.stdout.on('data', getCacheInfo13)
 		x1p.on('close', processCacheInfo14)
-		if (!x0o.content.internal) X0e.get(x0o.content.uri, processGetReq15).on('error', processWithoutGetReq10)
+		if (!x0o.content.internal) X0E.get(x0o.content.uri, processGetReq15).on('error', processWithoutGetReq10)
 	}
 	return
 }
