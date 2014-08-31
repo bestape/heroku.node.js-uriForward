@@ -1,14 +1,14 @@
 #! /usr/bin/env node
 // head
-var X0f = require('fs')
-, X0e = require('http')
-, x0e = X0e.createServer()
+var X0F = require('fs')
+, X0E = require('http')
+, x0e = X0E.createServer()
 , x0o = require('./posit.json')
 , x0s = process.env.PORT || x0o.port
 // body
 function responseToClient1(x1o, x1e) {
 	var x1b = false, y1b = true
-	, x1f = X0f.createReadStream(__dirname + '/' + x0o.content)
+	, x1f = X0F.createReadStream(__dirname + '/' + x0o.content)
 	function determineIfAllowedClient11() {
 		var x11i
 		for (x11i = 0; x11i < x0o.whitelist.length; x11i++) {
