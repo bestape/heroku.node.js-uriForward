@@ -62,9 +62,9 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 The personally controlled server's git can be used as a [revision control](https://en.wikipedia.org/wiki/Source_code_management) hub for the webapp's front-end and back-end content: 
 * Run `./publicPrivateSwitch.js` to change between the generic and specific versions of the webapp; 
 * use the `urlForward` folder for the generic versions of the webapp that can be used as the prototype for various circumstances; and
- * The git commits in this folder are theoretical-only developer versions of the webapp.
-* create a clone of the `urlForward` folder with `cp -r urlForward urlForward.publish` and use the `urlForward.publish` folder for the specific-only instance versions of the webapp.
- * The git commits in this folder are applied-only versions of the webapp that are runnable; and
+ * The git commits in this folder are theoretical developer versions of the webapp.
+* create a clone of the `urlForward` folder with `cp -r urlForward urlForward.publish` and use the `urlForward.publish` folder for the specific versions of the webapp.
+ * The git commits in this folder are applied instance versions of the webapp that are runnable; and
  * `git push heroku master --force` has to be used if the `urlForward` prototype used by the heroku server is different from the `urlForward` prototype used by `urlForward.publish`. 
 
 ###tensor variables & declarative sentence functions
